@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Verificar número primo</title>
+
+</head>
+<body>
+	<script type="text/javascript">
+		// Solicita a entrada do usuário via teclado
+		let numero = prompt("Digite um número inteiro positivo:");
+
+		// Converte a entrada do usuário em um número inteiro
+		numero = parseInt(numero);
+
+		// Verifica se o número é válido (inteiro positivo)
+		if (Number.isInteger(numero) && numero > 0) {
+			let Primo = true;
+
+			// Verifica se o número é primo
+			for (let i = 2; i < numero; i++) {
+				if (numero % i == 0) {
+					Primo = false;
+					break;
+				}
+			}
+
+			// Exibe o resultado da verificação na janela de alerta
+			if (Primo) {
+				alert(numero + " é primo");
+			} else {
+				alert(numero + " não é primo");
+			}
+		} else {
+			alert("Por favor, digite um número inteiro positivo");
+		}
+	</script>
+</body>
+</html>

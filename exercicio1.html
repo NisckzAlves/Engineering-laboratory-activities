@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Verificar tipo de dado</title>
+
+</head>
+<body>
+	<script type="text/javascript">
+
+		let dado = prompt("Digite um dado:");
+		if (confirm("Deseja verificar o tipo do dado informado?")) {
+			if (!isNaN(dado)){
+				document.write("O tipo do dado informado é: Number");
+			}
+			else if (dado =="true" || dado=="false"){
+				document.write("O tipo do dado informado é: Boolean");
+			}
+			else if(isNaN(dado)){
+			document.write("O tipo do dado informado é: " + typeof dado);
+			}
+			
+		} else {
+			document.write("Obrigado por visitar esta página");
+		}
+	
+</script>
+</body>
+</html>
