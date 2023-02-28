@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 2</title>
+</head>
+<body>
+    
+    <script>
+function atualizarRelogio() {
+  // obter a data e hora atual
+  let now = new Date();
+
+  // extrair as informações de hora, minuto e segundo
+  let horas = now.getHours();
+  let minutos = now.getMinutes();
+  let segundos = now.getSeconds();
+
+  let horasTexto =horas.toString();
+  let minutosTexto = minutos.toString();
+  let segundosTexto = segundos.toString();
+
+ // atualizar o texto do relógio
+  let relogio = document.getElementById('clock'); 
+  relogio.textContent = horasTexto + ':' + minutosTexto + ':' + segundosTexto;
+}
+
+// iniciar a atualização do relógio a cada segundo
+setInterval(atualizarRelogio, 1000);
+
+    </script>
+
+<h1><div id="clock">00:00:00</div></h1>
+
+</body>
+</html>

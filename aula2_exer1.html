@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 2</title>
+</head>
+<body>
+    <Script>
+        let data = new Date();
+        let dia = data.getDate();
+        let sem = data.getDay();
+        let mes = data.getMonth();
+        let ano = data.getFullYear();
+        let meses = ["Janeiro", "Fevereiro", "Marco", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+        let semana =["Segunda-feira","Terça-feira","Quarta-feira","Quinta-Feira", "Sexta-feira", "Sábado", "Domingo"];
+        document.write("<h1>"+ semana[sem] + ", "+ dia + " de " + meses[mes] + " de " + ano);
+
+    </Script>
+</body>
+</html>
