@@ -18,9 +18,9 @@ function atualizarRelogio() {
   let minutos = now.getMinutes();
   let segundos = now.getSeconds();
 
-  let horasTexto =horas.toString();
-  let minutosTexto = minutos.toString();
-  let segundosTexto = segundos.toString();
+  let horasTexto =horas < 10 ? '0' + horas :horas.toString();
+  let minutosTexto = minutos < 10 ? '0' + minutos : minutos.toString();
+  let segundosTexto = segundos < 10 ? '0' + segundos :segundos.toString();
 
  // atualizar o texto do relógio
   let relogio = document.getElementById('clock'); 
