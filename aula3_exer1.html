@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+	<title>Exercicio 1</title>
+    <style>
+
+
+		body {
+			background-color: #f0f0f0;
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+		}
+
+		.container {
+			margin: 0 auto;
+			max-width: 800px;
+			padding: 20px;
+		}
+
+		h1 {
+			color: #333;
+			font-size: 32px;
+			margin-bottom: 20px;
+		}
+
+		form {
+			display: flex;
+			flex-wrap: wrap;
+			margin-bottom: 20px;
+		}
+
+		label {
+			color: #666;
+			font-size: 18px;
+			margin-right: 10px;
+            margin-top: 10px;
+			width: 130px;
+		}
+
+
+		input[type="text"] {
+			border: 2px solid #ccc;
+			border-radius: 4px;
+			font-size: 18px;
+			padding: 8px;
+			width: 400px;
+		}
+
+		button {
+			background-color: #333;
+			border: none;
+			border-radius: 4px;
+			color: #fff;
+			cursor: pointer;
+			font-size: 18px;
+			padding: 10px 20px;
+		}
+
+		button:hover {
+			background-color: #666;
+		}
+
+		h2 {
+			color: #333;
+			font-size: 24px;
+			margin-bottom: 10px;
+		}
+
+		ol {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+
+		li {
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			font-size: 18px;
+			margin-bottom: 10px;
+			padding: 10px;
+		}
+    </style>
+</head>
+<body>
+<div class="container">
+	<h1>Adicionar Dados ao Array em ordem alfabética</h1>
+
+	<form onsubmit="Listagem(); return false;">
+		<label for="valor">Digite um valor:</label>
+		<input type="text" id="valor" name="valor">
+		<button type="submit">Adicionar</button>
+	</form>
+
+	<h2>Dados Cadastrados:</h2>
+	<ol id="lista"></ol>
+
+	<script>
+		let array = [];
+
+		function Listagem() {
+			let newvalor = document.getElementById("valor").value;
+			array.push(newvalor);
+			array.sort();
+
+			let lista = document.getElementById("lista");
+			lista.innerHTML = "";
+
+			for (let i = 0; i < array.length; i++) {
+				let li = document.createElement("li");
+				li.appendChild(document.createTextNode(array[i]));
+				lista.appendChild(li);
+			}
+
+			document.getElementById("valor").value = "";
+		}
+        
+	</script>
+</div>
+</body>
+</html>
