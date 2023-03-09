@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+	<title>Exercicio 1</title>
+  <style>
+
+form {
+  max-width: 600px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+}
+
+label {
+  display: inline-block;
+  width: 150px;
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="url"],
+input[type="date"] {
+  width: 250px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+input[type="radio"] {
+  margin-right: 10px;
+}
+
+input[type="submit"] {
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+input[type="submit"]:hover {
+  background-color: #3e8e41;
+}
+
+#areaDiv,
+#matriculaDiv,
+#lattesDiv,
+#cursoDiv {
+  display: none;
+}
+
+#areaDiv,
+#lattesDiv {
+  display: block;
+}
+
+
+h1 {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+  </style>
+	<script type="text/javascript">
+		function mostrarExtras() {
+			let opcaoSelecionada = document.querySelector('input[name="tipo"]:checked').value;
+			if (opcaoSelecionada == "professor") {
+				document.getElementById("areaDiv").style.display = "block";
+				document.getElementById("matriculaDiv").style.display = "block";
+				document.getElementById("lattesDiv").style.display = "block";
+				document.getElementById("cursoDiv").style.display = "none";
+			} else {
+				document.getElementById("areaDiv").style.display = "none";
+				document.getElementById("matriculaDiv").style.display = "block";
+				document.getElementById("lattesDiv").style.display = "none";
+				document.getElementById("cursoDiv").style.display = "block";
+			}
+		}
+	</script>
+</head>
+<body>
+	<h1>Formulário de Cadastro</h1>
+	<form id="cadastro">
+		<label for="nome">Nome:</label>
+		<input type="text" id="nome" name="nome" required><br><br>
+
+		<label for="email">Email:</label>
+		<input type="email" id="email" name="email" required><br><br>
+
+		<label for="telefone">Telefone:</label>
+		<input type="tel" id="telefone" name="telefone" required><br><br>
+
+		<label for="dataNasc">Data de Nascimento:</label>
+		<input type="date" id="dataNasc" name="dataNasc" required><br><br>
+
+		<label for="telefoneFixo">Telefone Fixo:</label>
+		<input type="tel" id="telefoneFixo" name="telefoneFixo"><br><br>
+
+		<input type="radio" id="professor" name="tipo" value="professor" checked onclick="mostrarExtras()"> Professor
+		<input type="radio" id="aluno" name="tipo" value="aluno" onclick="mostrarExtras()"> Aluno<br><br>
+
+		<div id="areaDiv" style="display:block">
+			<label for="area">Área:</label>
+			<input type="text" id="area" name="area"><br><br>
+		</div>
+
+		<div id="matriculaDiv">
+			<label for="matricula">Matrícula:</label>
+			<input type="text" id="matricula" name="matricula" required><br><br>
+		</div>
+
+		<div id="lattesDiv" style="display:block">
+			<label for="lattes">Currículo Lattes:</label>
+			<input type="url" id="lattes" name="lattes"><br><br>
+		</div>
+
+		<div id="cursoDiv" style="display:none">
+			<label for="curso">Curso:</label>
+			<input type="text" id="curso" name="curso"><br><br>
+		</div>
+
+		<input type="submit" value="Enviar">
+	</form>
+
+  <script>
+		let form = document.getElementById("cadastro");
+
+		form.addEventListener("submit", function(event) {
+			event.preventDefault();
+
+			function Pessoa() {
+        let nome;
+        let email;
+        let telefone;
+        let telefoneFixo;
+        let dataNasc;
+        let matricula;
+
+        constructor(nome,email, telefone, telefoneFixo, dataNasc, matricula)
+         {
+            this._nome =  form.nome.value;
+            this._email =  form.email.value;
+            this._telefone =  form.telefone.value;
+            this._telefoneFixo = form.telefoneFixo.value;
+            this._dataNasc = form.dataNasc.value;
+            this._matricula = form.matricula.value;
+          }
+
+    };
+      let opcaoSelecionada = document.querySelector('input[name="tipo"]:checked').value;
+			if (opcaoSelecionada == "aluno"){  
+      function Aluno() {
+        Pessoa.call(this);
+        let curso;
+        constructor(nome, telefone, telefoneFixo, dataNasc, matricula, curso) 
+        {
+           super(nome, telefone, telefoneFixo, dataNasc, matricula);
+            this._curso = form.curso.value;
+  }
+      }; 
+    }
+
+    else{  
+      function Professor(){
+        Pessoa.call(this);
+        let area;
+        let lattes;
+        constructor(nome, telefone, telefoneFixo, dataNasc, matricula, area, lattes) 
+        {
+           super(nome, telefone, telefoneFixo, dataNasc, matricula);
+            this._area = form.curso.value;
+            this._lattes = form.lattes.value;
+  }
+      }
+    }
+
+  })
+
+</script>
+</body>
+</html>

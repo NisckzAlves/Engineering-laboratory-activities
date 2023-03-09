@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 2 </title>
+<style>
+    body {
+	font-family: Arial, sans-serif;
+}
+
+h1 {
+	text-align: center;
+}
+
+.todo-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 20px;
+}
+
+#valor {
+    width:500px;
+	padding: 5px;
+	margin-right: 10px;
+	border: none;
+	border-radius: 5px;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+#novoBotao {
+	padding: 5px 10px;
+	border: none;
+	border-radius: 5px;
+	background-color: #4CAF50;
+	color: #fff;
+	cursor: pointer;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+#novoBotao:hover {
+	background-color: #3e8e41;
+}
+
+#todoList {
+	margin-top: 20px;
+	padding: 0;
+	list-style: none;
+}
+
+#todoList li {
+	display: flex;
+	align-items: center;
+	margin-bottom: 10px;
+	padding: 10px;
+	background-color: #f2f2f2;
+	border-radius: 5px;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+#todoList li:last-child {
+	margin-bottom: 0;
+}
+
+#todoList li button {
+	padding: 5px 10px;
+	border: none;
+	border-radius: 5px;
+	background-color: #f44336;
+	color: #fff;
+	cursor: pointer;
+	margin-left: 10px;
+}
+
+#todoList li button:hover {
+	background-color: #d32f2f;
+}
+
+#todoList li button:focus {
+	outline: none;
+}
+
+#todoList li button.up {
+	margin-right: 10px;
+	background-color: #2196F3;
+}
+
+#todoList li button.up:hover {
+	background-color: #0d47a1;
+}
+
+#todoList li button.down {
+	background-color: #2196F3;
+}
+
+#todoList li button.down:hover {
+	background-color: #0d47a1;
+}
+
+</style>
+</head>
+<body>
+
+	<h1>Todo List</h1>
+    <div class="todo-container">
+	<input type="text" id="valor"> <br>
+	<button id="novoBotao">Adicionar Item</button>
+	<ul id="todoList"></ul>
+</div>
+<script>
+let valor = document.getElementById("valor");
+let novoBotao = document.getElementById("novoBotao");
+let todoList = document.getElementById("todoList");
+
+novoBotao.addEventListener("click", addItem);
+function addItem() {
+	let li = document.createElement("li");
+	li.innerText = valor.value;
+
+	let excluir = document.createElement("button");
+	excluir.innerText = "Excluir";
+	excluir.addEventListener("click", () => {
+		li.remove();
+	});
+	li.appendChild(excluir);
+	let cima = document.createElement("button");
+	cima.innerText = "▲";
+	cima.addEventListener("click", () => {
+		let prevLi = li.previousSibling;
+		if (prevLi) {
+			todoList.insertBefore(li, prevLi);
+		}
+	});
+	li.appendChild(cima);
+
+	let baixo = document.createElement("button");
+	baixo.innerText = "▼";
+	baixo.addEventListener("click", () => {
+		let nextLi = li.nextSibling;
+		if (nextLi) {
+			todoList.insertBefore(nextLi, li);
+		}
+	});
+	li.appendChild(baixo);
+	todoList.appendChild(li);
+	valor.value = "";
+}
+
+    
+</script>
+</body>
+</html>
