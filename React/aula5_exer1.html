@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <style>
+        h1{
+            color:purple;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+    //Fonte: https://initialcommit.com/blog/usestate-useeffect-hooks-react#:~:text=The%20useState%20hook%20is%20used,re%2Drendering%2C%20and%20unmounting.
+    //O useState é usado para armazenar variáveis ​​que fazem parte do estado da sua aplicação e vão mudando conforme o usuário interage com o seu site.
+    //O useEffect permite que os componentes reajam a eventos do ciclo de vida, como montagem no DOM, nova renderização e desmontagem.
+    
+    const{useState, useEffect} = React;
+    function Escrita() {
+        const [texto, inserir] = useState('');
+
+        useEffect(() => {
+            const frase = 'Venha estudar na Fatec';
+            let i = 0;
+            const intervalo = setInterval(() => {
+                inserir(frase.substring(0, i + 1));
+                i++;
+                if (i == frase.length) {
+                    clearInterval(intervalo);
+                }
+            }, 100);
+            return () => clearInterval(intervalo);
+        }, []);
+        return <h1>{texto}</h1>;
+    }
+
+    ReactDOM.render(<Escrita/>, document.getElementById('root'));
+
+    </script>
+</body>
+</html>
